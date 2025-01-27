@@ -17,7 +17,7 @@ public class Main {
         ArrayList<Card> userHand = deck.getUserHand();
         ArrayList<Card> enemyHand = deck.getEnemyHand();
 
-
+        //test
         System.out.println(userHand);
         System.out.println(userHand.get(0));
 
