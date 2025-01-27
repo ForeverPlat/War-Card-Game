@@ -1,0 +1,46 @@
+-Start with a deck of 52 cards
+    -Need to create a card with both a VALUE and a SUIT
+        -There 4 suites: Spades (♠), Clubs (♣), Diamonds (♦), Hearts (♥)
+        -13 ranks (values): Aces to Kings
+            -Lowest value: Two
+            -Highest value: Ace
+
+-Split the deck into two piles
+    -This should be randomized
+    -No cards should be repeated
+
+-Both player take a card from the TOP their cards
+    -The player whose card has an higher VALUE takes both cards and puts it at the BOTTOM of their deck
+        -If both cards are the same the players will:
+            -Both player take three cards from the TOP their deck (This seems to be a repeated process) but will place it faced down
+            -Both player take a card from the TOP their cards decks
+                -The player whose card has an higher VALUE takes all the cards and puts it at the BOTTOM of their deck
+                    -This REPEATS as long as the cards are the same
+-This repeats until one of the players has NO cards remaining
+
+Things that are repeating:
+    -Both player take a card from the TOP their cards
+        -Possible: Taking the first value from a data structure and moving all the other values up by one index
+    -The player whose card has an higher VALUE takes both cards and puts it at the BOTTOM of their deck
+        -Check which value is greater
+
+Thing that may be objects:
+    -Cards
+    -Decks
+    -Battle field
+
+Need to figure out:
+    -How are the two or more competing cards stored and compared
+    -How are cards no going to repeat
+
+
+
+
+
+------While coding-------
+
+-Find this pretty clever
+    -The to string for the cards shows if they are (J,Q,K,A), however the # remains the value
+
+
+-Hands for each player are a form of deck
