@@ -45,7 +45,7 @@ public class Battlefield extends Deck{
         for (int i = 0; i <= 3; i++) {
             newUserTopCard = userHand.get(i);
             newEnemyTopCard = enemyHand.get(i);
-            play(userHand, enemyHand, newUserTopCard,newEnemyTopCard );
+            play(userHand, enemyHand, newUserTopCard, newEnemyTopCard);
 
             inPlay.add(userTopCard);
             inPlay.add(enemyTopCard);
@@ -53,6 +53,7 @@ public class Battlefield extends Deck{
             System.out.println("user top card: " + newUserTopCard + " enemy top card: " + newEnemyTopCard);
         }
 
+/*
         if  (newUserTopCard.getValue() > newEnemyTopCard.getValue()) {
             userWin(userHand);
 
@@ -62,6 +63,8 @@ public class Battlefield extends Deck{
         } else if (userTopCard.getValue() == enemyTopCard.getValue()) {
             war(userHand, enemyHand, newUserTopCard, newEnemyTopCard);
         }
+
+ */
 
 
     }
