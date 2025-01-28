@@ -6,28 +6,45 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         Deck deck = new Deck();
+        deck.shuffle();
 
-        System.out.println(deck.getDeck());
+        Hands user = new Hands("user", deck.getDeck());
+        Hands enemy = new Hands("enemy", deck.getDeck());
 
-        deck.splitDeck();
-
-
-        ArrayList<Card> userHand = deck.getUserHand();
-        ArrayList<Card> enemyHand = deck.getEnemyHand();
-
-        //test
-        System.out.println(userHand);
-        System.out.println(userHand.get(0));
+        ArrayList<Card> userHand = user.getUserHand();
+        ArrayList<Card> enemyHand = enemy.getEnemyHand();
 
 
-        //while (!userHand.isEmpty() || !enemyHand.isEmpty()) {
 
-           //if (userHand.get(0)
+        System.out.println("users hand: " + userHand);
+        System.out.println("enemy hand: " + enemyHand);
+
+        int b = 0;
+        //while (!userHand.isEmpty() || !enemyHand.isEmpty())
+        while (b < 5){
+            Card userTopCard = userHand.get(0);
+            Card enemyTopCard = enemyHand.get(0);
 
 
-        //}
+            Battlefield battlefield = new Battlefield(userHand, enemyHand, userTopCard, enemyTopCard);
+
+            if (userTopCard.getValue() > enemyTopCard.getValue()) {
+                battlefield.userWin(userHand);
+
+            } else if (userTopCard.getValue() < enemyTopCard.getValue()) {
+                battlefield.enemyWin(enemyHand);
+
+            } else if (userTopCard.getValue() == enemyTopCard.getValue()) {
+                battlefield.war(userHand, enemyHand, userTopCard, enemyTopCard);
+            }
+
+            System.out.println("users hand: " + userHand);
+            System.out.println("enemy hand: " + enemyHand);
+
+            b++;
+
+        }
 
 
     }

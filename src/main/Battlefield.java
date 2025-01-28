@@ -3,72 +3,67 @@ package main;
 import java.util.ArrayList;
 
 public class Battlefield extends Deck{
+    private ArrayList<Card> inPlay;
 
+    public Battlefield(ArrayList<Card> userHand, ArrayList<Card> enemyHand, Card userTopCard, Card enemyTopCard) {
+        inPlay = new ArrayList<>();
+        play(userHand, enemyHand, userTopCard, enemyTopCard);
+        //System.out.println("in play: " + inPlay);
 
-    //use this for stacking logic (plz change the name later)
+    }
 
-    //cards up for stake when war occurs
-    private ArrayList<Card> warCards;
-    private ArrayList<Card> battleField;
-    private int stack;
+    public void play(ArrayList<Card> userHand, ArrayList<Card> enemyHand, Card userTopCard, Card enemyTopCard) {
+        inPlay = new ArrayList<>();
 
-    //this stuff will likely be callled in a while loop
-    //it will create a new battlefield object each time
-
-    public Battlefield(Card userCard, Card enemyCard) {
-        battleField = new ArrayList<>();
-        //battleField.add(userCard, enemyCard);
-
-        super.userHand.remove(userCard);
-        super.enemyHand.remove(enemyCard);
+        inPlay.add(userTopCard);
+        inPlay.add(enemyTopCard);
+        userHand.remove(userTopCard);
+        enemyHand.remove(enemyTopCard);
 
     }
 
 
-    public String compareCards(Card userCard, Card enemyCard) {
-
-        if (userCard.getValue() > enemyCard.getValue()) {
-
-            return "user";
-
-        } else if (userCard.getValue() < enemyCard.getValue()) {
-            for (Card card: battleField) {
-                super.enemyHand.add(card);
-            }
-            battleField.clear();
-
-            return "enemy";
-        } else if (userCard.getValue() == enemyCard.getValue()) {
-            return war(userCard, enemyCard);
+    public void userWin(ArrayList<Card> userHand) {
+        for (Card card : inPlay) {
+            userHand.add(card);
         }
-        return "type";
-        //compare cards can call battlefield
+
     }
 
-    public String war(Card userCard, Card enemyCard) {
-
-        //while (userCard.getValue() == enemyCard.getValue()) {
-          //  battleField.add()
-        //}
-
-        return "type";
-    }
-
-    public void userWin () {
-        for (Card card : battleField) {
-            super.userHand.add(card);
+    public void enemyWin(ArrayList<Card> enemyHand) {
+        for (Card card : inPlay) {
+            enemyHand.add(card);
         }
-        battleField.clear();
 
     }
 
-    public void enemyWin() {
-        for (Card card : battleField) {
-            super.enemyHand.add(card);
+    public void war(ArrayList<Card> userHand, ArrayList<Card> enemyHand, Card userTopCard, Card enemyTopCard) {
+        Card newUserTopCard;
+        Card newEnemyTopCard;
+
+        System.out.println("war: "+inPlay);
+        for (int i = 0; i <= 3; i++) {
+            newUserTopCard = userHand.get(i);
+            newEnemyTopCard = enemyHand.get(i);
+            play(userHand, enemyHand, newUserTopCard,newEnemyTopCard );
+
+            inPlay.add(userTopCard);
+            inPlay.add(enemyTopCard);
+
+            System.out.println("user top card: " + newUserTopCard + " enemy top card: " + newEnemyTopCard);
         }
-        battleField.clear();
+
+        if  (newUserTopCard.getValue() > newEnemyTopCard.getValue()) {
+            userWin(userHand);
+
+        } else if (newUserTopCard.getValue() < newEnemyTopCard.getValue()) {
+           enemyWin(enemyHand);
+
+        } else if (userTopCard.getValue() == enemyTopCard.getValue()) {
+            war(userHand, enemyHand, newUserTopCard, newEnemyTopCard);
+        }
+
 
     }
-
 
 }
