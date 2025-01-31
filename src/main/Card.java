@@ -19,13 +19,13 @@ public class Card {
 
     public String toString() {
         switch (value) {
-            case 10:
-                return "J" + suit;
             case 11:
-                return "Q" + suit;
+                return "J" + suit;
             case 12:
-                return "K" + suit;
+                return "Q" + suit;
             case 13:
+                return "K" + suit;
+            case 14:
                 return "A" + suit;
             default:
                 return value + suit;

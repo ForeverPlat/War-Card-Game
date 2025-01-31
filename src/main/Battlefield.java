@@ -38,22 +38,37 @@ public class Battlefield extends Deck{
     }
 
     public void war(ArrayList<Card> userHand, ArrayList<Card> enemyHand, Card userTopCard, Card enemyTopCard) {
-        Card newUserTopCard;
-        Card newEnemyTopCard;
+        Card newUserTopCard = userHand.get(0);
+        Card newEnemyTopCard = enemyHand.get(0);
 
-        System.out.println("war: "+inPlay);
+        ArrayList<ArrayList<Card>> outerList = new ArrayList<>();
+
+        System.out.println("war: " + inPlay);
         for (int i = 0; i <= 3; i++) {
             newUserTopCard = userHand.get(i);
             newEnemyTopCard = enemyHand.get(i);
             play(userHand, enemyHand, newUserTopCard, newEnemyTopCard);
 
-            inPlay.add(userTopCard);
-            inPlay.add(enemyTopCard);
+            ArrayList<Card> innerTest = new ArrayList<>();
 
-            System.out.println("user top card: " + newUserTopCard + " enemy top card: " + newEnemyTopCard);
+            innerTest.add(newUserTopCard);
+            innerTest.add(newEnemyTopCard);
+
+            outerList.add(innerTest);
+
         }
 
-/*
+        System.out.println("user top card: " + newUserTopCard + " enemy top card: " + newEnemyTopCard);
+
+        for (ArrayList<Card> innerList : outerList) {
+            for (Card card : innerList) {
+                inPlay.add(card);
+            }
+        }
+
+        System.out.println(inPlay);
+
+
         if  (newUserTopCard.getValue() > newEnemyTopCard.getValue()) {
             userWin(userHand);
 
@@ -64,7 +79,6 @@ public class Battlefield extends Deck{
             war(userHand, enemyHand, newUserTopCard, newEnemyTopCard);
         }
 
- */
 
 
     }

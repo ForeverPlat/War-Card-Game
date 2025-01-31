@@ -10,7 +10,7 @@ public class Deck {
     public Deck () {
         deck = new ArrayList<>();
 
-        for (int cardValue = 2; cardValue <= 13; cardValue++) {
+        for (int cardValue = 2; cardValue <= 14; cardValue++) {
             for (String suite : suites) {
                 deck.add(new Card(cardValue, suite));
             }

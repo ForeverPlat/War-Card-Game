@@ -12,6 +12,9 @@ public class Main {
         System.out.println();
 
         Deck deck = new Deck();
+
+        System.out.println(deck.getDeck());
+        System.out.println(deck.getDeck().size());
         deck.shuffle();
         System.out.println("Shuffling the deck...");
         System.out.println();
@@ -26,8 +29,7 @@ public class Main {
         System.out.println("Starting game");
 
         int b = 0;
-        //while (!userHand.isEmpty() || !enemyHand.isEmpty())
-        while (b < 5){
+        while (!userHand.isEmpty() || !enemyHand.isEmpty()) {
             Scanner input = new Scanner(System.in);
 
             System.out.println("Click enter to draw and place a card");
@@ -65,7 +67,7 @@ public class Main {
 
                 System.out.println();
 
-                b++;
+                //System.out.println("\u000C"); //clear the console
 
             } else {
                 System.out.println("Not expected input");
